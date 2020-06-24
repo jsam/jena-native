@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.jena</groupId>
+    <artifactId>jena-native</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>jena-fuseki-server</artifactId>
+            <version>3.15.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.13.3</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>jenanative.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.graalvm.nativeimage</groupId>-->
+<!--                <artifactId>native-image-maven-plugin</artifactId>-->
+<!--                <version>20.1.0</version>-->
+<!--                <configuration>-->
+<!--                    <mainClass>jenanative.Main</mainClass>-->
+<!--                    <imageName>roll</imageName>-->
+<!--                    <buildArgs>&#45;&#45;allow-incomplete-classpath &#45;&#45;no-fallback &#45;&#45;report-unsupported-elements-at-runtime -H:ReflectionConfigurationFiles=../reflect-config.json -H:ResourceConfigurationFiles=../resource-config.json</buildArgs>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>native-image</goal>-->
+<!--                        </goals>-->
+<!--                        <phase>package</phase>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+        </plugins>
+    </build>
+
+</project>
